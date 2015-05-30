@@ -57,8 +57,18 @@
 	<!-- 导航栏 end -->
 
 	<!-- banner -->
-	<div class="banner">
-		<a href="###"><img src="img/banner.jpg" alt="" /></a>
+	<div class="banner" ag-stage ng-controller="stageController">
+		<!-- <a href="###"><img src="img/banner.jpg" alt="" /></a> -->
+		<ul class="banner_img" ng-style="{left:listW+'px'}">
+			<li><a href="###"><img src="" alt="" style="background-color: #06c;" /></a></li>
+			<li><a href="###"><img src="" alt="" style="background-color: red;" /></a></li>
+			<li><a href="###"><img src="" alt="" style="background-color: #6f0;" /></a></li>
+			<li><a href="###"><img src="" alt="" style="background-color: #c60;" /></a></li>
+		</ul>
+		<div class="inner stage_arr">
+			<span class="banner_left" ng-click="left()">&lt;</span>
+			<span class="banner_right" ng-click="right()">&gt;</span>
+		</div>
 		<div class="hd_service">
 			<p class="inner"></p>
 		</div>
@@ -99,10 +109,11 @@
 				<ul ag-tab ag-tab-content="热门 单品" ag-tab-target=".agTabCont"></ul>
 			</div>
 			<div class="pro_left">
-				<a href="###"><img src="" alt="" /></a>
+				<a href="###"><img src="img/zzz-302x460.jpg" alt="" /></a>
 				<div class="pro_left_box">
 					<p class="tit">营养保健特卖频道</p>
 					<p class="subtit">箱包全场五折起五折起啊啊</p>
+					<span class="pro_left_arr">&gt;</span>
 				</div>
 			</div>
 			<div class="pro_right agTabCont">
@@ -519,7 +530,7 @@
 		</div>
 		<i class="icon icon1"></i>
 		<i class="icon icon3"></i>
-		<i class="icon icon4"></i>
+		<a href="###" class="coupon_wrap" id="coupon"><i class="icon icon4"></i><em>!</em></a>
 		<i class="icon icon5"></i>
 		<i class="icon icon6"></i>
 		<i class="icon icon7"></i>
@@ -528,6 +539,7 @@
 		<i class="icon icon18" id="backtop"></i>
 	</div>
 	<p class="sidebar_tel" id="tel_pop">400-023-9090</p>
+	<p class="sidebar_tel sidebar_coupon" id="coupon_pop">您有5张优惠券</p>
 	<!-- 侧边工具栏 end -->
 
 	<!-- 弹出层 -->

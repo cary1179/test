@@ -22,6 +22,7 @@ dfn {font-style: normal; }
 .f-666 {color: #666 !important; }
 
 /* = layout = */
+.inner, .inner2, .inner3 {position: relative; }
 .inner {width: 1180px; margin: 0 auto; }
 .inner2 {width: 1200px; margin: 0 auto; }
 .inner3 {width: 800px; margin: 0 auto; }
@@ -106,10 +107,15 @@ dfn {font-style: normal; }
 .tab_box3 {margin-left: 40px; }
 
 /* = banner = */
-.banner {position: relative; padding-top: 350px; overflow: hidden; }
-.banner img {position: absolute; top: 0; left: 50%; height: 350px; margin-left: -960px; background-color: #F5F5F5; }
+.banner {position: relative; overflow: hidden; }
+.banner .stage_arr {position: absolute; left: 50%; top: 0; margin-left: -590px; clear: both; }
+.banner .banner_img {position: relative; width: 9999em; height: 350px; -webkit-transition: left .5s ease; -ms-transition: left .5s ease; transition: left .5s ease; }
+.banner .banner_img li {position: relative; float: left; width: 100%; height: 350px; overflow: hidden; }
+.banner img {position: absolute; top: 0; left: 50%; width: 1920px; height: 350px; margin-left: -960px; background-color: #F5F5F5; }
 .banner .hd_service {height: 114px; background: url(../img/info_ad.jpg) no-repeat; }
 .banner .hd_service .inner {height: 39px; padding-top: 38px; background: url(../img/hd_service.png) no-repeat 0 39px; }
+.banner_left, .banner_right {position: absolute; top: 150px; left: 0; width: 50px; height: 54px; text-align: center; color: #000; font: 50px/54px "simsun"; background-color: #fff; background-color: rgba(255,255,255,.5); cursor: pointer; _background-color: #fff; }
+.banner_right {left: auto; right: 0; }
 
 /* = 主题区 = */
 .index_main {padding-bottom: 80px; background-color: #F5F5F5; }
@@ -134,6 +140,7 @@ dfn {font-style: normal; }
 .index_layout4 .pro_left_box {position: absolute; bottom: 10px; left: 10px; right: 10px; color: #fff; text-align: center; font-family: "Microsoft Yahei"; padding: 30px 40px; background-color: #333; background-color: rgba(0,0,0,.8); _background-color: #333; _bottom: 12px; _width:220px; }
 .index_layout4 .pro_left_box .tit {font-size: 25px; font-weight: 700; border-bottom: 1px solid #fff; }
 .index_layout4 .pro_left_box .subtit {font-size: 16px; }
+.index_layout4 .pro_left_arr {position: absolute; top: 35px; right: 10px; font-size: 28px; color: #aaa; font-family: "simsun"; padding: 10px; }
 .index_layout4 .pro_right {overflow: hidden; padding: 10px; margin-left: 345px; _margin-left: 343px; border: 1px solid #ccc; background-color: #fff; *zoom: 1; }
 .index_layout4 .pro_right img {float: left; width: 411px; height: 225px; margin-right: 10px; margin-bottom: 10px; background-color: #ccc; }
 .index_layout4 .pro_right .img2, .index_layout4 .pro_right .img4 {margin-right: 0; }
@@ -172,21 +179,21 @@ dfn {font-style: normal; }
 .sidebar .shopcar {position: absolute; top: 130px; word-break: break-all; font-size: 14px; font-family: "Microsoft Yahei"; padding: 45px 5px 15px 13px; border: 1px dotted #888; border-width: 1px 0; background-color: #33343B; cursor: pointer; }
 .sidebar .shopcar em {display: block; width: 20px; height: 20px; font-style: normal; text-align: center; color: #fff; margin: 10px auto; margin-left: -2px; border-radius: 50%; background-color: #C11420; }
 .sidebar .shopcar:hover {background-color: #333; }
-.sidebar .icon {position: absolute; }
+.sidebar .icon {position: absolute; cursor: pointer; }
 .sidebar .icon1 {top: 70px; left: 7px; }
 .sidebar .icon2 {top: 15px; left: 6px; margin-bottom: 14px; }
-.sidebar .icon3 {top: 300px; left: 6px; }
-.sidebar .icon4 {top: 350px; left: 5px; }
+.sidebar .icon3 {top: 300px; left: 5px; }
 .sidebar .icon5 {top: 390px; left: 7px; }
 .sidebar .icon6 {top: 425px; left: 6px; }
 .sidebar .icon7 {top: 465px; left: 7px; }
-.sidebar .icon8 {}
-.sidebar .icon17 {}
 .sidebar .icon18 {bottom: 2px; left: 6px; }
-.sidebar .tel_wrap, .sidebar .weixin_wrap {position: absolute; top: 500px; left: 1px; width: 23px; height: 27px; padding: 7px; }
+.sidebar .tel_wrap, .sidebar .weixin_wrap, .sidebar .coupon_wrap {position: absolute; top: 500px; left: 1px; width: 23px; height: 27px; padding: 7px; }
 .sidebar .weixin_wrap {top: 542px; left: -1px; }
+.sidebar .coupon_wrap {top: 340px; left: 0; padding: 7px 9px 7px 5px; }
+.sidebar .coupon_wrap em {position: absolute; top: 0; right: 2px; width: 14px; height: 14px; line-height: 14px; color: #fff; font-style: normal; text-align: center; border-radius: 50%; background-color: #C21420; }
 .sidebar_tel {position: absolute; width: 100px; line-height: 34px; color: #fff; font-size: 14px; text-align: center; white-space: nowrap; background-color: #C11420; }
 .sidebar_tel:after {content: ""; position: absolute; right: -8px; top: 10px; width: 0px; height: 0px; border: 5px solid transparent; border-left: 5px solid #C11420; }
+.sidebar_coupon {font-size: 12px; }
 
 /* = 弹出层 = */
 .pop1 {position: absolute; margin-left: -1px; border: 1px solid #ddd; border-top: 0; background-color: #fff; }

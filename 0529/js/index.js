@@ -23,6 +23,30 @@ agApp.directive("agTab", function() {
 		}
 	}
 });
+agApp.directive("agStage", function() {
+	return {
+		link: function(scope, element, attrs) {
+			var _list = $(element).find("li"),
+				_ul = $(element).find("ul");
+			_ul.width(window.innerWidth*_list.length);
+			_list.width(window.innerWidth);
+		}
+	}
+});
+agApp.controller("stageController", function($scope) {
+	$scope.listW = 0;
+	$scope.num = $(".banner_img li").length;
+	$scope.left = function() {
+		$scope.listW = ($scope.listW - window.innerWidth) <= -window.innerWidth*$scope.num ? 0 : $scope.listW - window.innerWidth;
+	}
+	$scope.right = function() {
+		$scope.listW = ($scope.listW + window.innerWidth) > 0 ? -window.innerWidth*($scope.num-1) : $scope.listW + window.innerWidth;
+	}
+	setInterval(function() {
+		$scope.listW = ($scope.listW - window.innerWidth) <= -window.innerWidth*$scope.num ? 0 : $scope.listW - window.innerWidth;
+		$scope.$apply();
+	}, 5000);
+});
 
 /* jQuery */
 ;$(function() {
@@ -50,6 +74,9 @@ agApp.directive("agTab", function() {
 	});
 	$("#tel").hover(function() {
 		$(this).drop("#tel_pop", "left");
+	});
+	$("#coupon").hover(function() {
+		$(this).drop("#coupon_pop", "left");
 	});
 
 	/* = 筛选弹层 = */
