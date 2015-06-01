@@ -104,7 +104,7 @@ agApp.directive("agTab", function() {
 	/* = 轮播宽度自适应 = */
 	var _list = $(".banner").find("li"),
 		_ul = $(".banner").find("ul"),
-		windowW = window.innerWidth || window.screen.width;
+		windowW = document.body.clientWidth;
 	$(window).on("resize load", function() {
 		_ul.css("width", windowW*_list.length);
 		_list.css("width", windowW);
