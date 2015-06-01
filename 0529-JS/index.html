@@ -1,0 +1,618 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>爱购保税</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script type="text/javascript" src="http://cdn.bootcss.com/angular.js/1.2.13/angular.min.js"></script>
+	<!--[if lte IE 7]>
+		<script src="js/json2.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="js/stage.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body ng-app="agApp" id="ng-app">
+	<!-- 工具栏 -->
+	<div class="top_bar">
+		<div class="inner">
+			<div class="top_bar_right">
+				<a href="###" class="drop" id="drop2">我的爱购</a>
+				<a href="###" class="shopcar"><i class="icon icon13"></i> 购物车 <em>0</em></a>
+				<a href="###" class="drop" id="drop3">客户帮助</a>
+				<a href="###">网站导航 <i class="icon icon14"></i></a>
+			</div>
+			<div class="top_bar_left">
+				<a href="###">收藏本站</a>
+				<a href="###">注册</a>
+				<a href="###">登录</a>
+				<a href="###">hi,爱购保税</a>
+				<a href="###" class="drop" id="drop1"><i class="icon icon19"></i>消息<i class="icon icon20"></i></a>
+			</div>
+		</div>
+	</div>
+	<!-- 工具栏 end -->
+
+	<!-- logo和搜索 -->
+	<div class="inner header">
+		<h1 class="logo"><a href="###"></a></h1>
+		<div class="search clear">
+			<label class="input_bar" id="drop4"><i class="fr icon icon16"></i><span id="searchType">商品</span></label>
+			<input type="text" id="drop5" />
+			<button>搜索</button>
+		</div>
+	</div>
+	<!-- logo和搜索 end -->
+
+	<!-- 导航栏 -->
+	<div class="nav">
+		<div class="nav_bar inner clear">
+			<label class="nav_type" id="nav_type"><i class="fr icon icon11"></i>商品分类</label>
+			<ul class="nav_bar_list">
+				<li class="fr">全球招商 <i class="icon icon15"></i></li>
+				<li class="cur"><strong>首页</strong></li>
+				<li class=""><strong>每日疯抢</strong></li>
+				<li class="">关于我们</li>
+				<li class="">正品查询 <i class="icon icon12"></i></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 导航栏 end -->
+
+	<!-- banner -->
+	<div class="banner">
+		<!-- <a href="###"><img src="img/banner.jpg" alt="" /></a> -->
+		<ul class="banner_img">
+			<li><a href="###"><img src="img/banner.jpg" alt="" style="background-color: #06c;" /></a></li>
+			<li><a href="###"><img src="" alt="" style="background-color: red;" /></a></li>
+			<li><a href="###"><img src="img/banner.jpg" alt="" style="background-color: #6f0;" /></a></li>
+			<li><a href="###"><img src="img/banner.jpg" alt="" style="background-color: #c60;" /></a></li>
+		</ul>
+		<div class="inner stage_arr">
+			<span class="banner_left">&lt;</span>
+			<span class="banner_right">&gt;</span>
+		</div>
+		<div class="hd_service">
+			<p class="inner">
+				<span class="hd_service1"></span>
+				<span class="hd_service2"></span>
+				<span class="hd_service3"></span>
+				<span class="hd_service4"></span>
+				<span class="hd_service2 last"></span>
+			</p>
+		</div>
+	</div>
+	<!-- banner end -->
+
+	<div class="index_main">
+		<!-- 产品1 -->
+		<div class="inner2 index_layout1">
+			<h2><span></span></h2>
+			<div class="pro1">
+				<a href="###"><img src="img/zzz-1186x246.jpg" alt="" /></a>
+				<div class="pro1_soldout">抢光啦<em>SOLD OUT</em></div>
+			</div>
+		</div>
+
+		<!-- 产品2 -->
+		<div class="inner2 index_layout2">
+			<h2 class="clear"><span><em></em>今晚 22:30</span></h2>
+			<div class="pro1">
+				<a href="###"><img src="img/zzz-1186x246.jpg" alt="" /></a>
+			</div>
+		</div>
+		<div><button class="index_btn_more">查看更多商品 &gt;</button></div>
+
+		<!-- 产品3 -->
+		<div class="inner2 index_layout3">
+			<div class="pro3">
+				<a href="###"><img src="" alt="" class="img1" /></a>
+				<a href="###"><img src="" alt="" class="img2" /></a>
+			</div>
+		</div>
+
+		<!-- 产品4 -->
+		<div class="inner2 index_layout4 clear">
+			<h2 class="clear"><span>母婴用品</span> BADY & MOM</h2>
+			<div class="tab4 clear">
+				<ul ag-tab ag-tab-content="热门 单品" ag-tab-target=".agTabCont"></ul>
+			</div>
+			<div class="pro_left">
+				<a href="###"><img src="img/zzz-302x460.jpg" alt="" /></a>
+				<div class="pro_left_box">
+					<p class="tit">营养保健特卖频道</p>
+					<p class="subtit">箱包全场五折起五折起啊啊</p>
+					<span class="pro_left_arr">&gt;</span>
+				</div>
+			</div>
+			<div class="pro_right agTabCont">
+				<a href="###"><img src="img/zzz-411x225.jpg" alt="" class="img1" /></a>
+				<a href="###"><img src="img/zzz-411x225.jpg" alt="" class="img2" /></a>
+				<a href="###"><img src="img/zzz-411x225.jpg" alt="" class="img3" /></a>
+				<a href="###"><img src="img/zzz-411x225.jpg" alt="" class="img4" /></a>
+			</div>
+			<div class="pro_right2 agTabCont">
+				<ul class="clear">
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="inner2 index_layout4 clear">
+			<h2 class="clear"><span>营养保健</span> HEALTH FOOD</h2>
+			<div class="tab4 clear" id="tab4_2">
+				<ul ag-tab ag-tab-content="热门 单品" ag-tab-target=".agTabCont"></ul>
+			</div>
+			<div class="pro_left">
+				<a href="###"><img src="img/zzz-302x460.jpg" alt="" /></a>
+				<div class="pro_left_box">
+					<p class="tit">营养保健特卖频道</p>
+					<p class="subtit">箱包全场五折起五折起啊啊</p>
+					<span class="pro_left_arr">&gt;</span>
+				</div>
+			</div>
+			<div class="pro_right2 agTabCont tab4_2Tar">
+				<ul class="clear">
+					<li>
+						<p class="pro_label">
+							<span class="pro_label1">新品</span>
+							<span class="pro_label2">包邮</span>
+							<span class="pro_label3">特价</span>
+						</p>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+					<li>
+						<a href="###"><img src="img/zzz-264x175.jpg" alt="" /></a>
+						<h3>标题标题标题标题标题标题标题标题标题标题</h3>
+						<p><span class="price4"><dfn>&yen;</dfn>1800</span><del>2000</del></p>
+					</li>
+				</ul>
+			</div>
+			<div class="pro_right agTabCont tab4_2Tar">
+				<a href="###"><img src="img/zzz-411x225.jpg" alt="" class="img1" /></a>
+				<a href="###"><img src="img/zzz-411x225.jpg" alt="" class="img2" /></a>
+				<a href="###"><img src="img/zzz-411x225.jpg" alt="" class="img3" /></a>
+				<a href="###"><img src="img/zzz-411x225.jpg" alt="" class="img4" /></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 底部信息 -->
+	<div class="footer">
+		<p class="ft_service"></p>
+		<div class="inner3 ft_list clear">
+			<dl class="ft_list_box">
+				<dt>帮助中心</dt>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+			</dl>
+			<dl class="ft_list_box">
+				<dt>帮助中心</dt>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+			</dl>
+			<dl class="ft_list_box">
+				<dt>帮助中心</dt>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+			</dl>
+			<dl class="ft_list_box">
+				<dt>帮助中心</dt>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+			</dl>
+			<dl class="ft_list_box ft_list_box_last">
+				<dt>帮助中心</dt>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+				<dd><a href="###">新手上路</a></dd>
+			</dl>
+		</div>
+		<div class="ft_info">
+			<div class="inner3">
+				<p class="ft_links">
+					<a href="###">返回首页</a> |
+					<a href="###">爱购报税</a> |
+					<a href="###">爱购报税</a> |
+					<a href="###">爱购报税</a> |
+					<a href="###">爱购报税</a> |
+					<a href="###">爱购报税</a> |
+					<a href="###">爱购报税</a> |
+					<a href="###">爱购报税</a> |
+					<a href="###">爱购报税</a> |
+					<a href="###">爱购报税</a>
+				</p>
+				<p>Copyright©2013-2014 重庆保税港区进出口商品贸易有限公司版权所有   增值电信业务经营许可证：渝B2-20130028   渝ICP备13007562号</p>
+				<p><i class="icon icon9"></i><i class="icon icon10"></i></p>
+			</div>
+		</div>
+	</div>
+	<!-- 底部信息 end -->
+
+	<!-- 次级导航 -->
+	<div class="nav_list" id="nav_list" style="display: none;">
+		<ul>
+			<li>母婴用品<em></em></li>
+			<li>个护化妆<em></em></li>
+			<li>宠物用品<em></em></li><!-- cur选中状态 -->
+			<li>营养保健<em></em></li>
+			<li>日用百货<em></em></li>
+			<li>环球美食<em></em></li>
+			<li>酒水饮料</li>
+		</ul>
+	</div>
+	<!-- 次级导航 end -->
+
+	<!-- 选项卡 -->
+	<div class="tab_box clear" id="tab_box0" style="display: none;">
+		<div class="tab_box2 clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+	</div>
+	<div class="tab_box clear" id="tab_box1" style="display: none;">
+		<div class="tab_box1 clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box2 clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+	</div>
+	<div class="tab_box clear" id="tab_box2" style="display: none;">
+		<div class="tab_box1 fl clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box1 fl tab_box3 clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box2 fl clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box2 fl tab_box3 clear">
+			<img src="" alt="" class="tab_img tab_img_l" />
+		</div>
+	</div>
+	<div class="tab_box clear" id="tab_box3" style="display: none;">
+		<div class="tab_box1 fl clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box1 fl tab_box3 clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box2 fl clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+	</div>
+	<div class="tab_box clear" id="tab_box4" style="display: none;">
+		<div class="tab_box1 fl clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box1 fl tab_box3 clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+	</div>
+	<div class="tab_box clear" id="tab_box5" style="display: none;">
+		<div class="tab_box1 fl clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box1 fl tab_box3 clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box2 fl clear">
+			<img src="" alt="" class="tab_img tab_img_ler" />
+		</div>
+	</div>
+	<div class="tab_box clear" id="tab_box6" style="display: none;">
+		<div class="tab_box1 fl clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box1 fl tab_box3 clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box2 fl clear">
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<ul>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+				<li><a href="###">母婴用品</a></li>
+			</ul>
+			<img src="" alt="" class="tab_img" />
+		</div>
+		<div class="tab_box2 fl tab_box3 clear">
+			<img src="" alt="" class="tab_img tab_img_l" />
+		</div>
+	</div>
+	<!-- 选项卡 end -->
+
+	<!-- 侧边工具栏 -->
+	<div class="sidebar">
+		<div class="shopcar">
+			<i class="icon icon2"></i>购物车<em>2</em>
+		</div>
+		<a href="###" class="icon1_wrap" id="icon1_drop"><i class="icon icon1"></i></a>
+		<a href="###" class="icon3_wrap" id="icon3_drop"><i class="icon icon3"></i></a>
+		<a href="###" class="coupon_wrap" id="coupon"><i class="icon icon4"></i><em>!</em></a>
+		<a href="###" class="icon5_wrap" id="icon5_drop"><i class="icon icon5"></i></a>
+		<a href="###" class="icon6_wrap" id="icon6_drop"><i class="icon icon6"></i></a>
+		<a href="###" class="icon7_wrap" id="icon7_drop"><i class="icon icon7"></i></a>
+		<a href="###" class="tel_wrap" id="tel"><i class="icon icon8"></i></a>
+		<a href="###" class="weixin_wrap" id="drop6"><i class="icon icon17"></i></a>
+		<i class="icon icon18" id="backtop"></i>
+	</div>
+	<p class="sidebar_tel" id="tel_pop">400-023-9090</p>
+	<p class="sidebar_tel" id="icon1_pop">xxx</p>
+	<p class="sidebar_tel" id="icon3_pop">xxx</p>
+	<p class="sidebar_tel" id="icon5_pop">xxx</p>
+	<p class="sidebar_tel" id="icon6_pop">xxx</p>
+	<p class="sidebar_tel" id="icon7_pop">xxxxxxxxxxxx</p>
+	<p class="sidebar_tel sidebar_coupon" id="coupon_pop">您有5张优惠券</p>
+	<!-- 侧边工具栏 end -->
+
+	<!-- 弹出层 -->
+	<div class="pop1" id="drop1_pop" style="display: none;">
+		<ul>
+			<li><a href="###">[物流]<em>6</em><span class="f-666">个订单有物流变化</span></a></li>
+			<li><a href="###">[物流]<em>6</em><span class="f-666">个订单有物流变化</span></a></li>
+			<li><a href="###">[退款]<em>6</em><span class="f-666">个订单有物流变化</span></a></li>
+			<li><a href="###">[物流]<em>6</em><span class="f-666">个订单有物流变化</span></a></li>
+			<li><a href="###">[咨询]<em>6</em><span class="f-666">个订单有物流变化</span></a></li>
+		</ul>
+		<p class="more" style="*width: 153px;"><a href="###" class="f-000">查看全部</a></p>
+	</div>
+	<div class="pop1" id="drop2_pop" style="display: none;">
+		<ul>
+			<li><a href="###">我的订单</a></li>
+			<li><a href="###">我的收藏</a></li>
+			<li><a href="###">我的积分</a></li>
+			<li><a href="###">我的评价</a></li>
+		</ul>
+	</div>
+	<div class="pop1" id="drop3_pop" style="display: none;">
+		<ul>
+			<li><a href="###">帮助中心</a></li>
+			<li><a href="###">留言咨询</a></li>
+			<li><a href="###">联系电话</a></li>
+		</ul>
+	</div>
+	<div class="pop1 pop_searchtype" id="drop4_pop" style="display: none;">
+		<ul>
+			<li><a href="###">国家</a></li>
+		</ul>
+	</div>
+	<div class="pop1 pop_searchlist" id="drop5_pop" style="display: none;">
+		<ul>
+			<li><a href="###">秋装新品</a></li>
+			<li><a href="###">秋装新品</a></li>
+			<li><a href="###">秋装新品</a></li>
+			<li><a href="###">秋装新品</a></li>
+			<li><a href="###">秋装新品秋装新品</a></li>
+			<li><a href="###">秋装新品</a></li>
+			<li><a href="###">秋装新品</a></li>
+			<li><a href="###">秋装新品</a></li>
+		</ul>
+	</div>
+	<img src="img/weixin.jpg" alt="" id="drop6_pop" style="display: none;" />
+	<!-- 弹出层 end -->
+</body>
+</html>
