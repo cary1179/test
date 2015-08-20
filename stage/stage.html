@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+	<title>轮播器</title>
+	<style>
+		body, ul {margin: 0; padding: 0; }
+		ul {list-style: none; }
+		.stage {position: relative; overflow: hidden; }
+		.stage ul {font-size: 0; white-space: nowrap; }
+		.stage li {position: relative; display: inline-block; *display: inline; *zoom: 1; height: 400px; overflow: hidden; }
+		.stage li img {position: absolute; top: 0; left: 0; }
+		.stagedot {position: absolute; bottom: 10px; left: 50%; margin-left: -66px; }
+		.stagedot a {display: inline-block; *zoom: 1; overflow: hidden; width: 10px; height: 10px; border-radius:50%; margin: 0 5px; background-color: #ccc; }
+		.stagedot .cur {background-color: #c06; }
+		#left, #right {position: absolute; top: 50%; left: 50px; z-index: 3; width: 50px; height: 50px; color: #fff; font: 700 40px/50px "simsun"; text-align:center; text-decoration: none; border-radius:50%; margin-top:-25px; background-color: rgba(0,0,0,.5); }
+		#right {left: auto; right: 50px; }
+	</style>
+	<script src="../require.js"></script>
+	<script src="main.js"></script>
+</head>
+<body>
+	<div class="stage">
+		<ul>
+			<li><img src="img/1.jpg" alt="" /></li>
+			<li><img src="img/2.jpg" alt="" /></li>
+			<li><img src="img/3.jpg" alt="" /></li>
+			<li><img src="img/4.jpg" alt="" /></li>
+			<li><img src="img/5.jpg" alt="" /></li>
+		</ul>
+		<div class="stagedot">
+			<a href="###" class="cur"></a>
+			<a href="###"></a>
+			<a href="###"></a>
+			<a href="###"></a>
+			<a href="###"></a>
+		</div>
+		<!-- <a href="###" id="left">&lt;</a>
+		<a href="###" id="right">&gt;</a> -->
+	</div>
+</body>
+</html>

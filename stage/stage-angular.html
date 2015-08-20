@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播器</title>
+	<style>
+		body, ul {margin: 0; padding: 0; }
+		ul {list-style: none; }
+		.stage {position: relative; width: 80%; overflow: hidden; margin: 10px auto; }
+		.stage ul {font-size: 0; white-space: nowrap; }
+		.stage li {position: relative; display: inline-block; width: 100%; height: 400px; overflow: hidden; }
+		.stage li img {position: absolute; top: 0; left: 0; }
+		.stagedot {position: absolute; bottom: 10px; left: 50%; margin-left: -66px; }
+		.stagedot a {display: inline-block; *display: inline; *zoom: 1; width: 10px; height: 10px; border-radius:50%; margin: 0 5px; background-color: #ccc; }
+		.stagedot .cur {background-color: #c06; }
+		#left, #right {position: absolute; top: 50%; left: 50px; z-index: 3; width: 50px; height: 50px; color: #fff; font: 700 40px/50px "simsun"; text-align:center; text-decoration: none; border-radius:50%; margin-top:-25px; background-color: rgba(0,0,0,.5); }
+		#right {left: auto; right: 50px; }
+	</style>
+	<script src="../angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+		app.controller("stageController", function($scope) {
+			$scope.imgs = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg"];
+			$scope.len = $scope.imgs.length;
+			$scope.index = 0;
+
+			$scope.moveTo = function(index) {
+				$scope.index = (index<0 ? index+5 : index) % $scope.len;
+				$scope.left = -$scope.index*$scope.w + "px";
+			}
+			$scope.moveLeft = function() {
+				$scope.moveTo(++$scope.index);
+			}
+			$scope.moveRight = function() {
+				$scope.moveTo(--$scope.index);
+			}
+			$scope.timer = setInterval(function() {
+				$scope.moveLeft();
+				$scope.$digest();
+			}, 5000);
+		});
+		app.directive("myStage", function() {
+			return {
+				scope: {
+					w: "=myStageWidth" // 双向数据绑定，指令与外部控制器的通信
+				},
+				link: function(scope, elem, attrs) {
+					elem.css({
+						webkitTransition: "left .5s ease",
+						transition: "left .5s ease",
+						position: "relative",
+						left: 0
+					});
+					scope.w = elem[0].clientWidth;
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+	<div class="stage" ng-controller="stageController">
+		<ul ng-style="{left: left}" my-stage my-stage-width="w">
+			<li ng-repeat="img in imgs"><a href="###"><img src="{{img}}" alt="" /></a></li>
+		</ul>
+		<div class="stagedot">
+			<a href="###" ng-repeat="img in imgs" ng-click="moveTo($index)" ng-class="{cur:index==$index}"></a>
+		</div>
+		<a href="###" id="left" ng-click="moveLeft()">&lt;</a>
+		<a href="###" id="right" ng-click="moveRight()">&gt;</a>
+	</div>
+</body>
+</html>

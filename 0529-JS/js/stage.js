@@ -21,7 +21,7 @@ stage.prototype = {
 		$(this.option.elem).find("li").width(1);
 
 		var left = $(this.option.controller.left), right = $(this.option.controller.right), // 左右控制器
-		_ul = $(this.option.elem), _li = $(this.option.elem).find("li"), _this = this;; // ul, li
+		_ul = $(this.option.elem), _li = $(this.option.elem).find("li"), _this = this; // ul, li
 		this.length = _li.length; // banner图数量
 		this.windowW = _ul.parent().width(); // 窗口大小
 		this.maxLength = this.windowW*(_li.length-1); // 最大滑动距离
