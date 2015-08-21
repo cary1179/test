@@ -47,7 +47,7 @@ define(["touch"], function(touch) {
 				 this.w = this.elem.width(); // 容器宽度
 			  this.time = this.opt.time;
 			 this.index = this.opt.index;
-			 this.mTime = 300; // 动画时长
+			 this.mTime = 100; // 动画时长
 			this.moving = false; // 是否正在移动
 
 			this.ul.css({
@@ -70,20 +70,27 @@ define(["touch"], function(touch) {
 		 */
 		moveTo: function(dir) {
 			if(!this.moving) {
-				var self = this;
+				var self = this, dtd = $.Deferred();
 				self.moving = true;
 				self.index = self.index - dir;
 				index = self.index % self.length;
 				self.index = index<0 ? (index+5) : index;
 				self.ul.css({
 					transform: "translateX("+dir*self.w+"px)",
+					webkitTransition: "-webkit-transform " + this.mTime/1000 + "s linear",
 					transition: "transform " + this.mTime/1000 + "s linear"
 				});
 				self.dots && self.dots.eq(index).addClass("cur").siblings().removeClass("cur");
-				setTimeout(function() {
+
+				function format() {
 					self.formatLayout();
+					dtd.resolve();
+				}
+				dtd.promise(format);
+				setTimeout(format, self.mTime+100);
+				format.done(function() {
 					self.moving = false;
-				}, self.mTime+100);
+				});
 			}
 		},
 		/**

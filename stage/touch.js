@@ -20,7 +20,7 @@ define([], function() {
 			range = xy=="original" ? touches.clientX-this.startX : touches.clientY-this.startY,
 			moving = this.moving(range);
 		moving.done(function() {
-			Math.abs(range) > 88 && range*dir > 0 && callback.call(this, range);
+			range*dir > 0 && callback.call(this, range);
 		});
 		return range;
 	}
@@ -48,7 +48,7 @@ define([], function() {
 		},
 		moving: function(range) {
 			var dtd = $.Deferred();
-			this.elem.css("transform", "translateX("+range+"px)");
+			this.elem.css("transform", "translate3d("+range+"px, 0, 0)");
 			this.elem.on("touchend", function() {
 				dtd.resolve();
 			});
