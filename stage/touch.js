@@ -21,7 +21,7 @@ define([], function() {
 			moving = this.moving(range);
 		moving.done(function() {
 			range*dir > 0 && callback.call(this, range);
-		});
+		}).fail($.noop);
 		return range;
 	}
 
@@ -35,12 +35,14 @@ define([], function() {
 			}
 			this.opt = $.extend(option, opt);
 			this.elem = $.type(this.opt.elem)=="string" ? $(this.opt.elem) : this.opt.elem;
+			this.allowMoving = this.opt.allowMoving || true; // 当前是否允许跟随滑动
 
 			this.initFirstTouch(this.opt);
 		},
 		initFirstTouch: function() {
 			var self = this;
 			this.elem.on("touchstart", function(e) {
+				e.preventDefault();
 				var touches = e.originalEvent.touches[0];
 				self.startX = touches.clientX;
 				self.startY = touches.clientY;
@@ -48,32 +50,40 @@ define([], function() {
 		},
 		moving: function(range) {
 			var dtd = $.Deferred();
-			this.elem.css("transform", "translate3d("+range+"px, 0, 0)");
-			this.elem.on("touchend", function() {
-				dtd.resolve();
-			});
+			if(this.allowMoving) { // 可跟随滑动
+				this.elem.css("-webkit-transform", "translate3d("+range+"px, 0, 0)");
+				this.elem.on("touchend", function() {
+					dtd.resolve();
+				});
+			}else { // 不可跟随滑动(doing nothing..)
+				dtd.reject();
+			}
 			return dtd.promise();
 		},
 		left: function(fn) {
 			var self = this;
 			this.elem.on("touchmove", function(e) {
+				e.preventDefault();
 				var range = dirCallback.call(self, e, "original", -1, fn);
 			});
 		},
 		right: function(fn) {
 			var self = this;
 			this.elem.on("touchmove", function(e) {
+				e.preventDefault();
 				dirCallback.call(self, e, "original", 1, fn);
 			});
 		},
 		moveUp: function(fn) {
 			var self = this;
 			this.elem.on("touchmove", function(e) {
+				e.preventDefault();
 				dirCallback.call(self, e, "vertical", -1, fn);
 			});
 		},
 		moveDown: function(fn) {
 			var self = this;
+			e.preventDefault();
 			this.elem.on("touchmove", function(e) {
 				dirCallback.call(self, e, "vertical", 1, fn);
 			});

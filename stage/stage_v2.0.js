@@ -5,6 +5,7 @@
  * @attention: 注意事项：elem是ul的外层，time要大于1秒，toggle的对象要是一系列a标签
  */
 define(["touch"], function(touch) {
+
 	function Stage(obj) {
 		return new stage.prototype.init(obj);
 	}
@@ -14,14 +15,14 @@ define(["touch"], function(touch) {
 		init: function(obj) {
 			var self = this;
 			self.initDom(obj);
-			setInterval($.proxy(function() {
-				// self.moveTo(++self.index);
-			}, self), self.time);
+			self.autoPlay();
+			// document.hidden && self.pause();
 
 			if($.isMobile()) {
-				var tap = new touch();
+				var tap = this.tap = new touch();
 				tap.init({
-					elem: ".stage ul"
+					elem: ".stage ul",
+					allowMoving: true
 				});
 				tap.left(function() {
 					self.moveTo(-1);
@@ -36,7 +37,7 @@ define(["touch"], function(touch) {
 			var opt = {
 				elem: $(".J_stage"),
 				index: 0,
-				time: 5000
+				time: 1000
 			};
 			this.opt = $.extend(opt, obj);
 
@@ -47,20 +48,20 @@ define(["touch"], function(touch) {
 				 this.w = this.elem.width(); // 容器宽度
 			  this.time = this.opt.time;
 			 this.index = this.opt.index;
-			 this.mTime = 100; // 动画时长
+			 this.mTime = 200; // 动画时长
 			this.moving = false; // 是否正在移动
 
 			this.ul.css({
 				width: this.w,
 				height: this.li.height(),
 				position: "relative",
-				transition: "transform " + this.mTime/1000 + "s linear"
+				webkitTransition: "-webkit-transform " + this.mTime/1000 + "s linear"
 			});
 			this.li.css({
 				position: "absolute",
 				top: 0,
 				width: this.w,
-				zIndex: -1
+				display: "none"
 			});
 			this.formatLayout();
 		},
@@ -70,49 +71,52 @@ define(["touch"], function(touch) {
 		 */
 		moveTo: function(dir) {
 			if(!this.moving) {
-				var self = this, dtd = $.Deferred();
-				self.moving = true;
+				var self = this;
+
+				self.moving = true;			  // 正在运动中
+				self.pause();				  // 暂停自动轮播
+				self.tap.allowMoving = false; // 运动中不允许触屏滑动
 				self.index = self.index - dir;
 				index = self.index % self.length;
-				self.index = index<0 ? (index+5) : index;
+				self.index = index<0 ? (index+self.length) : index;
+
 				self.ul.css({
-					transform: "translateX("+dir*self.w+"px)",
-					webkitTransition: "-webkit-transform " + this.mTime/1000 + "s linear",
-					transition: "transform " + this.mTime/1000 + "s linear"
+					webkitTransform: "translateX("+dir*self.w+"px)",
+					webkitTransition: "-webkit-transform " + this.mTime/1000 + "s linear"
 				});
 				self.dots && self.dots.eq(index).addClass("cur").siblings().removeClass("cur");
 
-				function format() {
-					self.formatLayout();
-					dtd.resolve();
-				}
-				dtd.promise(format);
-				setTimeout(format, self.mTime+100);
-				format.done(function() {
-					self.moving = false;
-				});
+				setTimeout(function() {
+					self.formatLayout(function () {
+						this.moving = false;			// 不在运动中
+						this.autoPlay();				// 重启自动轮播
+						this.tap.allowMoving = true;	// 不在运动中，允许触屏滑动
+					});
+				}, self.mTime+100);
 			}
 		},
 		/**
 		 * 重置所有li的位置
 		 */
-		formatLayout: function() {
+		formatLayout: function(callback) {
 			var current = this.li.eq(this.index),
 				prev	= this.index!==0 ? current.prev() : this.li.last(),
 				next	= this.index!==this.length-1 ? current.next() : this.li.first();
 			this.ul.css({
-				transform: "translateX(0)",
-				transition: "none"
+				webkitTransform: "translateX(0)",
+				webkitTransition: "none"
 			});
 			this.li.css({
-				transform: "translateX(0)",
-				zIndex: -1
+				webkitTransform: "translateX(0)",
+				display: "none"
 			});
-			prev.css("transform", "translateX("+(-this.w)+"px)");
-			next.css("transform", "translateX("+this.w+"px)");
+			prev.css("webkitTransform", "translateX("+(-this.w)+"px)");
+			next.css("webkitTransform", "translateX("+this.w+"px)");
 			$.each([current, prev, next], function(i, $this) {
-				$this.css("z-index", 1);
+				$this.css("display", "block");
 			});
+
+			callback && callback.call(this, null);
 		},
 		toggle: function(arg) { // 轮播目录
 			var self = this;
@@ -124,6 +128,16 @@ define(["touch"], function(touch) {
 			$(arg).css("z-index", 2)
 			self.dots = $(arg).children(); // 所有的小点
 			self.dots.eq(self.index).addClass("cur").siblings().removeClass("cur");
+		},
+		autoPlay: function() {
+			var self = this;
+			self.timer && clearInterval(self.timer);
+			self.timer = setInterval(function () {
+				self.moveTo(-1);
+			}, self.time);
+		},
+		pause: function() {
+			clearInterval(this.timer);
 		}
 	}
 	stage.prototype.init.prototype = stage.prototype;
