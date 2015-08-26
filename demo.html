@@ -3,30 +3,320 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript" src="cQuery_110421.js"></script>
 <style type="text/css">
-html, body, ul {height: 100%; margin: 0; padding: 0; }
-	ul {
-		display: -webkit-box;
-	    -webkit-box-pack: justify;
-	    -webkit-box-orient: vertical;
-	}
-	li {width: 100%; height: 100px; }
-	li:nth-child(1) {background-color: #000; }
-	li:nth-child(2) {background-color: #333; }
-	li:nth-child(3) {background-color: #666; }
-	li:nth-child(4) {background-color: #999; }
-	li:nth-child(5) {background-color: #ccc; }
+	body,span,object,iframe,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-size:100%;}
+	h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
+	body{line-height:1; color:#333;}
+	body{ background-color:#f4f4f4 !important;}
+	body,button, input, select, textarea { font: 12px/1.5 Arial, 'Droid Sans', 'Hiragino Sans GB', 'Simsun', STXihei, 'sans-serif','Microsoft YaHei';}
+	button, input, select, textarea { font-size: 100%; margin:0; padding:0;outline: none; }
+	table { border-collapse: collapse; border-spacing: 0; }
+		/* = 城市搜索和搜索优化20150812 = */
+	.city_pop1 .keyword_prompting_lhsl{width:398px; border:1px solid #999; background-color:#fff;}
+	.city_pop1 .keyword_prompting_lhsl .title{height:26px; margin:0 10px 4px; padding:0 2px; border-bottom:1px dotted #ccc; line-height:26px; color:#999;}
+	.city_pop1 .keyword_prompting_lhsl .close{float:right; width:26px; height:26px; font:bold 14px/26px Simsun; color:#666; text-align:center;}
+	.city_pop1 .keyword_prompting_lhsl .close:hover { text-decoration:none; color:#FFA800; }
+	.city_pop1 .keyword_prompting_lhsl .sug_item{padding-bottom: 5px; padding-top:5px; border-bottom: 1px solid #ccc; position:relative;*zoom:1;}
+	.city_pop1 .keyword_prompting_lhsl .sug_item a{display:block; overflow:hidden; padding:5px 7px 5px 10px; color:#333;  line-height:18px; cursor:pointer;*zoom:1;}
+	.city_pop1 .keyword_prompting_lhsl .sug_item .hover { background-color:#2577e3; color:#fff; text-decoration:none;}
+	.city_pop1 .keyword_prompting_lhsl .sug_item .hover span,.city_pop1  .keyword_prompting_lhsl .sug_item .hover b{color:#fff;}
+	.city_pop1 .notfound_pop{ padding-bottom: 4px;}
+	.city_pop1 .notfound_pop .title{ line-height:26px; overflow: hidden; margin:0 10px 4px; padding:0 2px; color: #c01111; border-bottom: 0 none;}
+	.city_pop1 .notfound_pop .close{ margin-top: 2px;}
+	.city_pop1 .keyword_prompting_lhsl .text_input { float:left; max-width:160px; _width:160px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+	.city_pop1 .keyword_prompting_lhsl .sug_item a:after{ clear:both; content:'.'; display:block; height:0; overflow:hidden; }
+	.city_pop1 .keyword_prompting_lhsl .sug_item .num { float:left; width:75px; overflow: hidden; color:#999; text-align: right;}
+	.city_pop1 .keyword_prompting_lhsl .sug_item .city { display:block; float: left; width:270px; padding-right:4px; overflow:hidden;}
+	.city_pop1 .city_suggestion_pop .sug_item .city {width:195px; height:18px; white-space:nowrap; text-overflow:ellipsis;}
+	.city_pop1 .keyword_prompting_lhsl .sug_item b{font-weight:bold; color:#06c; }
+	.city_pop1 .keyword_prompting_lhsl .sug_category{ float:right; height:20px; line-height:20px; background-image:url(#); background-repeat: no-repeat;width:62px; padding-right:20px; padding-left:0; text-align:right;}
+	.city_pop1 .keyword_prompting_lhsl .sug_category_hover{ color: #fff; background-color: #2577e3; background-position: right 6px; background-color:#2577e3; }
+	.city_pop1 .keyword_prompting_lhsl .item_list_city .sug_category{background-position: right -160px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_city .hover .sug_category{background-position: right 0;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_airport .sug_category{background-position: right -260px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_airport .hover .sug_category{background-position: right -100px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_hotel .sug_category{background-position: right -200px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_hotel .hover .sug_category{background-position: right -40px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_areaadmin .sug_category{background-position: right -220px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_areaadmin .hover .sug_category{background-position: right -60px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_spot .sug_category{background-position: right -200px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_spot .hover .sug_category{background-position: right -20px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_htl .sug_category{background-position: right -300px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_htl .hover .sug_category{background-position: right -140px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_train .sug_category{background-position: right -280px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_train .hover .sug_category{background-position: right -120px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_business .sug_category{background-position: right -240px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_business .hover .sug_category{background-position: right -80px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_attractions .sug_category{background-position: right -180px;}
+	.city_pop1 .keyword_prompting_lhsl .item_list_attractions .hover .sug_category{background-position: right -20px;}
+	.city_pop1 .city_suggestion_pop .sug_item .num {float:left; width:80px; overflow:hidden; color:#999; text-align:right;}
+	.city_pop1 .city_suggestion_pop .city_scenic_pic{position:absolute; border:1px solid #999; display:none;}
+	.city_pop1 .city_suggestion_pop .city_scenic_pic img{display:block;}
+	.city_pop1 .city_suggestion_pop .scenic_mark{padding-left:21px;padding-top:1px;height:27px;overflow:hidden;cursor:default;white-space:nowrap; cursor:pointer;}
+	.city_pop1 .city_suggestion_pop .scenic_mark .scenic_map_num{position:absolute;top:0;left:0;width:21px;height:27px;z-index:3;background: url(http://pic.c-ctrip.com/hotels_seo/scenic_mark.png) no-repeat;_background: url(http://pic.c-ctrip.com/hotels_seo/scenic_mark_ie6.png) no-repeat;}
+	.city_pop1 .city_suggestion_pop .scenic_mark .scenic_map_num_hover{background: url(http://pic.c-ctrip.com/hotels_seo/scenic_mark_hover.png) no-repeat;_background: url(http://pic.c-ctrip.com/hotels_seo/scenic_mark_hover_ie6.png) no-repeat;}
+	.city_pop1 .city_suggestion_pop .scenic_mark_inner{background-color:#fff;height:22px;line-height:22px;padding:0 10px 0 15px;;border:1px solid #A1A19D;border-left:0 none; border-top:none; border-top-right-radius:13px;border-bottom-right-radius:13px;box-shadow:2px 2px 2px 0 #ccc;position:relative;z-index:2;left:-10px;_display:inline; *zoom:1; color:#0f66cd; font-size:12px;}
+	.city_pop1 .keyword_prompting_lhsl .c_page_mini { font: 12px/1.5 arial; margin:-1px 0 0; padding:6px 0; text-align: center; background:#fff; position:relative;}
+	.city_pop1 .keyword_prompting_lhsl .c_page_mini a {display: inline-block; margin: 0;color: #06c;padding: 0 6px;font:14px/1.5 Tahoma, Arial, Simsun, sans-serif;text-decoration: underline;}
+	.city_pop1 .keyword_prompting_lhsl .c_page_mini .c_page_mini_current{ color: #666;text-decoration: none;cursor: default;}
+	.city_pop2 .city_select_lhsl{width:408px;padding:10px;border:1px solid #999;background-color:#fff;}
+	.city_pop2 .city_select_lhsl .close{float:right;width:20px;height:20px;color:#666;text-align:center;font:bold 16px/20px Simsun;}
+	.city_pop2 .city_select_lhsl .close:hover{text-decoration:none;color:#FFA800;}
+	.city_pop2 .city_select_lhsl .title{margin-bottom:10px;color:#999;}
+	.city_pop2 .city_select_lhsl .tab_box{width:100%;height:22px;margin-bottom:6px;margin-top:0;border-bottom:2px solid #ccc;}
+	.city_pop2 .city_select_lhsl .tab_box li{position:relative;float:left;display:inline;margin-right:2px;line-height:22px;cursor:pointer;}
+	.city_pop2 .city_select_lhsl .tab_box li b{display:none;}
+	.city_pop2 .city_select_lhsl .tab_box li span{padding:0 8px;}
+	.city_pop2 .city_select_lhsl .tab_box .hot_selected{border-bottom:2px solid #06c;margin-bottom:-2px;font-weight:bold;color:#06c;}
+	.city_pop2 .city_select_lhsl .tab_box .hot_selected b{position:absolute;top:23px;left:50%;display:block;width:0;height:0;margin-left:-5px;overflow:hidden;font-size:0;line-height:0;border-color:#06c transparent transparent transparent;border-style:solid dashed dashed dashed;border-width:5px;}
+	.city_pop2 .city_select_lhsl .city_item,.city_pop2  .city_select_lhsl .search_history_box {display:inline-block;*zoom:1;overflow:hidden;}
+	.city_pop2 .city_select_lhsl .city_item{width:408px;}
+	.city_pop2 .city_select_lhsl .city_item a,.city_pop2  .city_select_lhsl .search_history_box a {float:left;display:inline;width:52px;height:22px;margin:0 2px 2px 0;padding-left:8px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:22px;color:#333;}
+	.city_pop2 .city_select_lhsl .city_item a:hover,.city_pop2 .city_select_lhsl .search_history_box a:hover{background-color:#2577E3;text-decoration:none;color:#fff;}
+	.city_pop2 .city_item .city_item_in{width:378px;padding-left:30px;*zoom:1;}
+	.city_pop2 .city_item .city_item_in:after,.city_pop2 .city_select_lhsl .search_history_box:after{display:block;height:0;visibility:hidden;overflow:hidden;content:".";clear:both;}
+	.city_pop2 .city_item .city_item_letter{float:left;width:30px;height:22px;margin-left:-30px;line-height:22px;text-align:center;color:#E56700;}
+	.city_pop2 .city_select_lhsl .sarch_history_title{margin-bottom:2px;font-weight:bold;color:#06c;}
+	.city_pop2 .city_select_lhsl .search_history_box{margin-bottom:6px;}
+
+	#J_keyword {width: 200px; height: 22px; line-height: 22px; font-size: 18px; }
 </style>
 </head>
 <body>
-  
-  <ul>
-  	<li></li>
-  	<li></li>
-  	<li></li>
-  	<li></li>
-  	<li></li>
-  </ul>
+
+<input type="text" id="J_keyword" />
+<div class="city_pop1" id="J_pop1" style="position: absolute; top: 0; right: 0; z-index: 200;display: none;">
+	<div class="keyword_prompting_lhsl city_suggestion_pop">
+        <p class="title">
+            <a class="close CQ_suggestionClose" href="javascript:;">×</a>
+            <span class="text_input">呼，</span>若需缩小范围，请输入更多条件。
+        </p>
+        <div class="sug_item item_list_city">
+        	<a href="javascript:;" data="Hulunbuir|呼伦贝尔|4255|580|呼伦贝尔|，内蒙古|City|呼伦贝尔|4255" data-yindex="1" class="hover">
+				<div class="sug_category">城市</div>
+				<span class="city"><b>呼</b>伦贝尔，内蒙古</span>
+				<span class="num">580家酒店</span>
+			</a>
+			<a href="javascript:;" data="Hohhot|呼和浩特|103|989|呼和浩特|，内蒙古|City|呼和浩特|103" data-yindex="2">
+				<span class="city"><b>呼</b>和浩特，内蒙古</span>
+				<span class="num">989家酒店</span>
+			</a>
+			<a href="javascript:;" data="Manzhouli|满洲里|1083|583|满洲里|，内蒙古|City|满洲里，呼伦贝尔|1083" data-yindex="3">
+				<span class="city">满洲里，<b>呼</b>伦贝尔，内蒙古</span>
+				<span class="num">583家酒店</span>
+			</a>
+			<a href="javascript:;" data="Huma|呼玛|21055|31|呼玛|，黑龙江|City|呼玛，大兴安岭|21055" data-yindex="4">
+				<span class="city"><b>呼</b>玛，大兴安岭，黑龙江</span>
+				<span class="num">31家酒店</span>
+			</a>
+			<a href="javascript:;" data="Hutubi|呼图壁|21852|29|呼图壁|，新疆|City|呼图壁，昌吉|21852" data-yindex="5">
+				<span class="city"><b>呼</b>图壁，昌吉，新疆</span>
+				<span class="num">29家酒店</span>
+			</a>
+			<a href="javascript:;" data="Ergun City|额尔古纳|7638|615|额尔古纳|，内蒙古|City|额尔古纳，呼伦贝尔|7638" data-yindex="6">
+				<span class="city">额尔古纳，<b>呼</b>伦贝尔，内蒙古</span>
+				<span class="num">615家酒店</span>
+			</a>
+			<a href="javascript:;" data="Genhe|根河|2651|110|根河|，内蒙古|City|根河，呼伦贝尔|2651" data-yindex="7">
+				<span class="city">根河，<b>呼</b>伦贝尔，内蒙古</span>
+				<span class="num">110家酒店</span>
+			</a>
+			<a href="javascript:;" data="Yakeshi|牙克石|1136|103|牙克石|，内蒙古|City|牙克石，呼伦贝尔|1136" data-yindex="8">
+				<span class="city">牙克石，<b>呼</b>伦贝尔，内蒙古</span>
+				<span class="num">103家酒店</span>
+			</a>
+			<a href="javascript:;" data="Zalantun|扎兰屯|1135|122|扎兰屯|，内蒙古|City|扎兰屯，呼伦贝尔|1135" data-yindex="9">
+				<span class="city">扎兰屯，<b>呼</b>伦贝尔，内蒙古</span>
+				<span class="num">122家酒店</span>
+			</a>
+			<a href="javascript:;" data="Xinbaerhuzuoqi|新巴尔虎左旗|21200|39|新巴尔虎左旗|，内蒙古|City|新巴尔虎左旗，呼伦贝尔|21200" data-yindex="10">
+            	<span class="city">新巴尔虎左旗，<b>呼</b>伦贝尔，内蒙古</span>
+                <span class="num">39家酒店</span>
+            </a>
+            <a href="javascript:;" data="Chenbaerhuqi|陈巴尔虎旗|21753|49|陈巴尔虎旗|，内蒙古|City|陈巴尔虎旗，呼伦贝尔|21753" data-yindex="11">
+            	<span class="city">陈巴尔虎旗，<b>呼</b>伦贝尔，内蒙古</span>
+                <span class="num">49家酒店</span>
+            </a>
+            <a href="javascript:;" data="Xinbaerhuyouqi|新巴尔虎右旗|21923|43|新巴尔虎右旗|，内蒙古|City|新巴尔虎右旗，呼伦贝尔|21923" data-yindex="12">
+            	<span class="city">新巴尔虎右旗，<b>呼</b>伦贝尔，内蒙古</span>
+                <span class="num">43家酒店</span>
+            </a>
+        </div>
+        <div class="c_page_mini" style="display: block;">
+        	<a href="javascript:void(0);" class="address_current" page="0">1</a>
+        	<a href="javascript:void(0);" page="1">2</a>
+        	<a href="javascript:void(0);" page="2">3</a>
+        	<a href="javascript:void(0);" page="3">4</a>
+        	<a href="javascript:void(0);" page="4">5</a>
+        	<a href="javascript:void(0);" page="1">-&gt;</a>
+        </div>
+    </div>
+</div>
+<div class="city_pop2" id="J_pop2"></div>
+
+<script type="text/template" id="tpl2">
+    <div class="city_select_lhsl">
+        <a class="close" href="javascript:;">×</a>
+        <p class="title">支持中文/拼音/简拼输入</p>
+        {{if historyCity.length>0}}
+        <p class="sarch_history_title">搜索历史</p>
+        <div class="search_history_box">
+        	<a href="javascript:;" title="上海">上海</a>
+        	<a href="javascript:;" title="北京">北京</a>
+        </div>
+        {{/if}}
+
+        
+		<ul class="tab_box"><li class="hot_selected">
+		    <span>热门</span></li>
+		    {{enum(tit_k, tit_v) dataCopy}}
+		        <li class=""><span>${tit_k.toUpperCase()}</span></li>
+		    {{/enum}}
+		</ul>
+        <div class="city_item">
+            <div>
+            	{{each(index, value) hot}}
+                <a href="javascript:void(0);">${value}</a>
+                {{/each}}
+            </div>
+        </div>
+        {{enum(tit_k, tit_v) dataCopy}}
+	        <div class="city_item">
+	        	{{enum(k, v) tit_v}}
+		            <div class="city_item_in">
+		                <span class="city_item_letter">${k.toUpperCase()}</span>
+		                {{each(index, value) v}}
+		                <a href="javascript:void(0);">${value}</a>
+		                {{/each}}
+		            </div>
+	            {{/enum}}
+	        </div>
+        {{/enum}}
+
+    </div>
+</script>
+
+<script type="text/javascript">
+$.ready(function() {
+	"use strict";
+	var jquery = jQuery.noConflict();
+
+	$.fn.datalist = function(selector, callback) {
+		var $this = $(this), h = $this.css("height").toInt(), offset = $this.offset(), $pop;
+		$pop = $.type(selector) === "string" ? $(selector) : selector;
+		$this.bind("focus", function() {
+			$pop.css({
+				position: "absolute",
+				left: offset.left + "px",
+				top: offset.top + h + "px"
+			});
+			/* = 城市搜索实例 = */
+			var key = new KeywordSearch();
+			key.init({
+				elem: "#J_pop2",
+				target: $this
+			});
+			/* = 城市搜索 end = */
+		});
+	}
+	$.locationSearch = function(key, value) {
+		var arr = location.search.substring(1).split("&"), obj = {},
+			str = "", tmp=[], // 覆盖key专用参数
+			emptyLocation = location.href.replace(location.search, "");
+		if(arr[0] == "") arr.length = 0;
+		if(arr.length !== 0) {
+			jquery.each(arr, function(i, v) {
+				var args = v.split("=");
+				obj[args[0]] = args[1];
+			});
+		}
+
+		if(key && !value) { // 有key值时返回这个key的location.search参数值
+			return obj[key];
+		}
+
+		if(key && value) { // key和value都有时，定义这个key的值
+			obj[key] = value;
+			jquery.each(obj, function(k, v) {
+				str += k+"="+v;
+				tmp.push(str);
+			});
+			
+			if(tmp.length !== 0) {
+				location.href = emptyLocation + "?" + tmp.join("&");
+			}
+		}
+		return obj || {}; // 没有参数时返回当前search对象
+	}
+	$("#J_keyword").datalist("#J_pop2", $.noop);
+
+	/* = 城市搜索 = */
+	function KeywordSearch() {}
+	KeywordSearch.prototype = {
+		constructor: "KeywordSearch",
+		init: function(opt) {
+			$.extend(this, opt);
+			this.pop = $.type(this.elem) === "string" ? jquery(this.elem) : this.elem;
+			this.target = $.type(this.target) === "string" ? jquery(this.target) : this.target;
+			this.tmpl = $("#tpl2").html();
+
+			this.pushData(); // 生成模板
+		},
+		pushData: function() {
+			var $J_pop = this.pop, self = this;
+			if($J_pop.html() !== "") return false;
+			$.ajax("citys.json", {
+				method: "GET",
+				onsuccess: function(result) {
+					var data = $.parseJSON(result.response), dataCopy;
+					dataCopy = $.copy(data);
+					delete dataCopy.hot;
+					$.extend(data, {
+						historyCity: $.storage.get("historyCity") || [],
+						dataCopy: dataCopy
+					});
+					self.doSuccess(data);
+				},
+				onerror: function(message) {
+					console.log(message);
+				}
+			});
+		},
+		tab: function() {
+			var self = this;
+			self.items.hide().eq(0).show();
+			self.tabs.removeClass("hot_selected").eq(0).addClass("hot_selected");
+			self.tabs.on("click", function() {
+				var $this = jquery(this), index = $this.index();
+				$this.addClass("hot_selected").siblings().removeClass("hot_selected");
+				self.items.hide().eq(index).show();
+			});
+			self.citys.on("click", function() {
+				self.doSelect(this.innerHTML);
+			});
+		},
+		doSuccess: function(result) {
+			this.pop.html( $.tmpl.render(this.tmpl, result) );
+			this.items = this.pop.find(".city_item");
+			this.tabs = this.pop.find(".tab_box li");
+			this.citys = this.items.find("a");
+			this.tab();
+		},
+		doSelect: function(name) {
+			this.target.value(name);
+			this.jumpTo(name); // 页面跳转
+		},
+		jumpTo: function(name) {
+			if(name) {
+				$.locationSearch("city", name);
+			}
+		}
+	}
+
+});
+</script>
 
 </body>
 </html>
