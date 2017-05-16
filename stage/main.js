@@ -8,6 +8,7 @@ require.config({
 	}
 });
 
+
 require(["jquery", "stage", "touch", "jquery.plus"], function($, Stage, touch) {
 
 	$(function() {
